@@ -1,14 +1,18 @@
 import {makeExecutableSchema, addMockFunctionsToSchema} from 'graphql-tools'
 import {resolvers} from './resolvers'
+
 const typeDefs = `
-type Channel{
+type Channel {
   id: ID!
   name: String  
 }
-type Query{
+type Query {
   channels: [Channel]
 }
+type Mutation {
+addChannel(name: String!): Channel
+}
 `
-const schema = makeExecutableSchema({typeDefs,resolvers})
+const schema = makeExecutableSchema({typeDefs, resolvers})
 // addMockFunctionsToSchema({schema})
 export {schema}
